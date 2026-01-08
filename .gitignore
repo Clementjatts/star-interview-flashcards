@@ -1,6 +1,9 @@
 # Dependencies
 node_modules/
 
+# Local docs
+DEPLOYMENT.md
+
 # OS files
 .DS_Store
 Thumbs.db
