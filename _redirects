@@ -1,0 +1,2 @@
+# Redirect pages.dev to custom domain
+https://star-interview-flashcards.pages.dev/* https://interview.clementadegbenro.com/:splat 301
