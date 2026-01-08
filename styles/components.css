@@ -1,0 +1,638 @@
+/* ============================================
+   Card Styles - Glassmorphism with Flip Animation
+   ============================================ */
+
+/* Flip Card Container */
+.flip-card {
+    perspective: 1000px;
+    cursor: pointer;
+    height: 100%;
+}
+
+.card {
+    position: relative;
+    border-radius: var(--radius-xl);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    box-shadow:
+        0 4px 6px var(--card-shadow),
+        0 0 0 1px var(--glass-border);
+    transition:
+        transform var(--duration-fast) var(--ease-snap),
+        box-shadow var(--duration-fast) var(--ease-snap);
+    overflow: hidden;
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+/* Flip Card Inner - For 3D flip effect */
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Card Hover Effects */
+.card:hover,
+.flip-card:hover .card {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow:
+        0 16px 32px var(--card-shadow),
+        0 0 0 1px var(--accent-primary);
+}
+
+/* Shimmer effect on hover */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.1),
+            transparent);
+    transition: left var(--duration-base) var(--ease-snap);
+    z-index: 10;
+    pointer-events: none;
+}
+
+.card:hover::before {
+    left: 100%;
+}
+
+/* Card Front/Back Styles */
+.card-front,
+.card-back {
+    padding: var(--spacing-md);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.card-front {
+    padding-bottom: var(--spacing-xs);
+}
+
+.card-back {
+    padding-top: var(--spacing-xs);
+}
+
+.flip-card .card-front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.flip-card .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: rotateY(180deg);
+    overflow-y: auto;
+}
+
+/* Static card styles (non-flip) */
+.card:not(.flip-card) .card-front {
+    border-bottom: 1px solid var(--glass-border);
+    background: linear-gradient(135deg, var(--glass-bg) 0%, transparent 100%);
+}
+
+.card:not(.flip-card) .card-back {
+    background: transparent;
+}
+
+/* Card Front Colors with Gradients */
+.card-front.bg-blue-50 {
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.15) 0%, rgba(96, 165, 250, 0.05) 100%);
+    border-color: rgba(96, 165, 250, 0.3);
+}
+
+.card-front.bg-green-50 {
+    background: linear-gradient(135deg, rgba(52, 211, 153, 0.15) 0%, rgba(52, 211, 153, 0.05) 100%);
+    border-color: rgba(52, 211, 153, 0.3);
+}
+
+.card-front.bg-yellow-50 {
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.15) 0%, rgba(251, 191, 36, 0.05) 100%);
+    border-color: rgba(251, 191, 36, 0.3);
+}
+
+.card-front.bg-red-50 {
+    background: linear-gradient(135deg, rgba(248, 113, 113, 0.15) 0%, rgba(248, 113, 113, 0.05) 100%);
+    border-color: rgba(248, 113, 113, 0.3);
+}
+
+.card-front.bg-purple-50 {
+    background: linear-gradient(135deg, rgba(167, 139, 250, 0.15) 0%, rgba(167, 139, 250, 0.05) 100%);
+    border-color: rgba(167, 139, 250, 0.3);
+}
+
+.card-front.bg-indigo-50 {
+    background: linear-gradient(135deg, rgba(129, 140, 248, 0.15) 0%, rgba(129, 140, 248, 0.05) 100%);
+    border-color: rgba(129, 140, 248, 0.3);
+}
+
+/* STAR Section Colors - For examples.html */
+.bg-blue-50 {
+    background: var(--situation-bg);
+}
+
+.bg-yellow-50 {
+    background: var(--task-bg);
+}
+
+.bg-red-50 {
+    background: var(--action-bg);
+}
+
+.bg-green-50 {
+    background: var(--success-bg);
+}
+
+.bg-purple-50 {
+    background: var(--result-bg);
+}
+
+/* Flip indicator */
+.flip-indicator {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: var(--spacing-md);
+    opacity: 0.7;
+    transition: opacity var(--transition-fast);
+}
+
+.card:hover .flip-indicator {
+    opacity: 1;
+}
+
+.flip-indicator i {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+/* ============================================
+   Grid Layout
+   ============================================ */
+
+.grid {
+    display: grid;
+    gap: var(--spacing-lg);
+}
+
+.grid-cols-1 {
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+
+    .grid.md\:grid-cols-2,
+    .grid.grid-cols-1.md\:grid-cols-2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid {
+        grid-auto-rows: minmax(200px, auto);
+    }
+
+    .card {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+/* ============================================
+   Section Titles
+   ============================================ */
+
+.section-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-xl);
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.section-title::before {
+    content: '';
+    width: 4px;
+    height: 1.5em;
+    background: linear-gradient(180deg, var(--accent-primary), var(--accent-secondary));
+    border-radius: var(--radius-sm);
+}
+
+/* ============================================
+   List Styles
+   ============================================ */
+
+ul.list-disc {
+    list-style-type: none;
+    margin-left: 0;
+    margin-bottom: var(--spacing-md);
+    padding-left: var(--spacing-lg);
+}
+
+ul.list-disc li {
+    margin-bottom: var(--spacing-sm);
+    position: relative;
+    color: var(--text-secondary);
+}
+
+ul.list-disc li::before {
+    content: '';
+    position: absolute;
+    left: -1.25rem;
+    top: 0.5rem;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-primary);
+}
+
+ol.list-decimal {
+    list-style-type: none;
+    counter-reset: item;
+    margin-left: 0;
+    margin-bottom: var(--spacing-md);
+    padding-left: var(--spacing-lg);
+}
+
+ol.list-decimal li {
+    margin-bottom: var(--spacing-sm);
+    position: relative;
+    counter-increment: item;
+    color: var(--text-secondary);
+}
+
+ol.list-decimal li::before {
+    content: counter(item);
+    position: absolute;
+    left: -1.5rem;
+    top: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    background: var(--accent-primary);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ============================================
+   Practice Cards Specific Styles
+   ============================================ */
+
+.practice-card .card-front {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.star-framework {
+    margin-top: auto;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-md);
+}
+
+/* ============================================
+   Practice Input Styles
+   ============================================ */
+
+.practice-input-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.practice-input-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-primary);
+    font-size: 0.875rem;
+}
+
+.practice-input-group textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: var(--spacing-sm);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.875rem;
+    resize: vertical;
+    transition: var(--transition-fast);
+}
+
+.practice-input-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.2);
+}
+
+.practice-input-group textarea::placeholder {
+    color: var(--text-muted);
+}
+
+.char-count {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-align: right;
+    margin-top: var(--spacing-xs);
+}
+
+/* Practice Buttons */
+.practice-buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.practice-btn {
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition:
+        transform var(--duration-fast) var(--ease-snap),
+        background var(--duration-fast) var(--ease-snap),
+        box-shadow var(--duration-fast) var(--ease-snap);
+    border: 1px solid var(--glass-border);
+}
+
+.practice-btn-primary {
+    background: var(--accent-primary);
+    color: white;
+    border-color: var(--accent-primary);
+}
+
+.practice-btn-primary:hover {
+    background: var(--accent-secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(129, 140, 248, 0.4);
+}
+
+.practice-btn-primary:active {
+    transform: translateY(0) scale(0.98);
+    transition-duration: var(--duration-instant);
+}
+
+.practice-btn-secondary {
+    background: var(--glass-bg);
+    color: var(--text-primary);
+}
+
+.practice-btn-secondary:hover {
+    background: var(--glass-border);
+    transform: translateY(-1px);
+}
+
+.practice-btn-secondary:active {
+    transform: translateY(0) scale(0.98);
+}
+
+/* Timer Styles */
+.practice-timer {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.timer-display {
+    font-size: 2rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: var(--text-primary);
+    min-width: 80px;
+}
+
+.timer-display.warning {
+    color: var(--warning);
+}
+
+.timer-display.danger {
+    color: var(--error);
+    animation: blink 1s ease-in-out infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.timer-controls {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.timer-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    color: var(--text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-fast);
+}
+
+.timer-btn:hover {
+    background: var(--accent-primary);
+    color: white;
+}
+
+/* ============================================
+   Info Box Styles
+   ============================================ */
+
+.info-box {
+    padding: var(--spacing-lg);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+}
+
+.info-box h3 {
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+/* Collapsible Details Element */
+details.info-box summary {
+    user-select: none;
+}
+
+details.info-box summary::-webkit-details-marker {
+    display: none;
+}
+
+details.info-box[open] .details-icon {
+    transform: rotate(90deg);
+}
+
+/* ============================================
+   Badge / Tag Styles
+   ============================================ */
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: var(--accent-primary);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: var(--radius-xl);
+}
+
+/* ============================================
+   Saved Indicator
+   ============================================ */
+
+.saved-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: 0.75rem;
+    color: var(--success);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+
+.saved-indicator.show {
+    opacity: 1;
+}
+
+/* ============================================
+   Border Colors for Card Sections
+   ============================================ */
+
+.border-blue-200 {
+    border-color: rgba(96, 165, 250, 0.3);
+}
+
+.border-green-200 {
+    border-color: rgba(52, 211, 153, 0.3);
+}
+
+.border-yellow-200 {
+    border-color: rgba(251, 191, 36, 0.3);
+}
+
+.border-red-200 {
+    border-color: rgba(248, 113, 113, 0.3);
+}
+
+.border-purple-200 {
+    border-color: rgba(167, 139, 250, 0.3);
+}
+
+.border-indigo-200 {
+    border-color: rgba(129, 140, 248, 0.3);
+}
+
+.border-b {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    animation: slideInUp var(--duration-base) var(--ease-snap) backwards;
+}
+
+.grid .card:nth-child(1) {
+    animation-delay: 0ms;
+}
+
+.grid .card:nth-child(2) {
+    animation-delay: var(--stagger-fast);
+}
+
+.grid .card:nth-child(3) {
+    animation-delay: calc(var(--stagger-fast) * 2);
+}
+
+.grid .card:nth-child(4) {
+    animation-delay: calc(var(--stagger-fast) * 3);
+}
+
+.grid .card:nth-child(5) {
+    animation-delay: calc(var(--stagger-fast) * 4);
+}
+
+.grid .card:nth-child(6) {
+    animation-delay: calc(var(--stagger-fast) * 5);
+}

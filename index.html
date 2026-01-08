@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Master the STAR method for behavioral interviews with interactive flashcards, practice questions, and model answers.">
+    <meta name="keywords" content="STAR method, behavioral interview, job interview, interview preparation, flashcards">
+    <title>STAR Method Flashcards - Master Behavioral Interviews</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+    <div class="max-w-6xl mx-auto">
+        <!-- Header Section -->
+        <header class="header-container">
+            <h1>
+                <i class="fas fa-star" style="color: var(--accent-primary);"></i>
+                STAR Method Flashcards
+            </h1>
+            <p class="intro">Interactive flashcards to help you master behavioral interview questions</p>
+
+            <!-- Theme Toggle -->
+            <div class="header-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode" title="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Progress Bar -->
+        <div class="progress-container" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="6">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <!-- Tab Navigation -->
+        <nav class="tab-button-container" role="tablist" aria-label="STAR Method sections">
+            <button class="tab-button active" onclick="openTab(event, 'basics')" role="tab" aria-selected="true"
+                aria-controls="basics" id="tab-basics">
+                <i class="fas fa-info-circle"></i>
+                <span>Basics</span>
+            </button>
+            <button class="tab-button" onclick="openTab(event, 'components')" role="tab" aria-selected="false"
+                aria-controls="components" id="tab-components">
+                <i class="fas fa-puzzle-piece"></i>
+                <span>STAR Components</span>
+            </button>
+            <button class="tab-button" onclick="openTab(event, 'questions')" role="tab" aria-selected="false"
+                aria-controls="questions" id="tab-questions">
+                <i class="fas fa-question-circle"></i>
+                <span>Question Types</span>
+            </button>
+            <button class="tab-button" onclick="openTab(event, 'tips')" role="tab" aria-selected="false"
+                aria-controls="tips" id="tab-tips">
+                <i class="fas fa-lightbulb"></i>
+                <span>Tips & Mistakes</span>
+            </button>
+            <button class="tab-button" onclick="openTab(event, 'examples')" role="tab" aria-selected="false"
+                aria-controls="examples" id="tab-examples">
+                <i class="fas fa-check-circle"></i>
+                <span>Model Answers</span>
+            </button>
+            <button class="tab-button" onclick="openTab(event, 'practice')" role="tab" aria-selected="false"
+                aria-controls="practice" id="tab-practice">
+                <i class="fas fa-dumbbell"></i>
+                <span>Practice</span>
+            </button>
+        </nav>
+
+        <p class="keyboard-hint">
+            <i class="fas fa-keyboard"></i> Use arrow keys ← → to navigate between tabs
+        </p>
+
+        <!-- Tab Content -->
+        <main>
+            <div id="basics" class="tab-content active" role="tabpanel" aria-labelledby="tab-basics">
+                <!-- Content will be loaded from components/basics.html -->
+            </div>
+
+            <div id="components" class="tab-content" role="tabpanel" aria-labelledby="tab-components">
+                <!-- Content will be loaded from components/components.html -->
+            </div>
+
+            <div id="questions" class="tab-content" role="tabpanel" aria-labelledby="tab-questions">
+                <!-- Content will be loaded from components/questions.html -->
+            </div>
+
+            <div id="tips" class="tab-content" role="tabpanel" aria-labelledby="tab-tips">
+                <!-- Content will be loaded from components/tips.html -->
+            </div>
+
+            <div id="examples" class="tab-content" role="tabpanel" aria-labelledby="tab-examples">
+                <!-- Content will be loaded from components/examples.html -->
+            </div>
+
+            <div id="practice" class="tab-content" role="tabpanel" aria-labelledby="tab-practice">
+                <!-- Content will be loaded from components/practice.html -->
+            </div>
+        </main>
+
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="scripts/tabs.js"></script>
+    <script src="scripts/cards.js"></script>
+    <script src="scripts/practice.js"></script>
+    <script src="scripts/app.js"></script>
+
+    <script>
+        // Load component HTML files
+        document.addEventListener('DOMContentLoaded', function () {
+            // Function to load HTML content from component files
+            function loadComponent(id, file) {
+                const element = document.getElementById(id);
+                element.classList.add('loading');
+
+                fetch('components/' + file)
+                    .then(response => {
+                        if (!response.ok) throw new Error('Network response was not ok');
+                        return response.text();
+                    })
+                    .then(html => {
+                        element.innerHTML = html;
+                        element.classList.remove('loading');
+
+                        // Initialize practice features if this is the practice tab
+                        if (id === 'practice' && typeof initPractice === 'function') {
+                            initPractice();
+                        }
+
+                        // Initialize flip cards
+                        if (typeof initFlipCards === 'function') {
+                            initFlipCards(element);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error loading component:', error);
+                        element.classList.remove('loading');
+                        element.innerHTML = `
+                            <div class="tab-error">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <p>Unable to load content. If you opened this file directly, please run a local server.</p>
+                                <p style="font-size: 0.875rem; color: var(--text-muted);">
+                                    Run: <code style="background: var(--glass-bg); padding: 2px 8px; border-radius: 4px;">npx serve</code> in the project folder
+                                </p>
+                                <button onclick="location.reload()">
+                                    <i class="fas fa-redo"></i> Retry
+                                </button>
+                            </div>
+                        `;
+                    });
+            }
+
+            // Load all components
+            loadComponent('basics', 'basics.html');
+            loadComponent('components', 'components.html');
+            loadComponent('questions', 'questions.html');
+            loadComponent('tips', 'tips.html');
+            loadComponent('examples', 'examples.html');
+            loadComponent('practice', 'practice.html');
+
+            // Initialize theme
+            initTheme();
+        });
+    </script>
+</body>
+
+</html>

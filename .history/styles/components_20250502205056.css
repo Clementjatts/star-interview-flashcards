@@ -1,0 +1,74 @@
+/* Card styles */
+.card {
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Card front/back styles */
+.card-front {
+    background-color: #ebf4ff;
+    border-bottom-width: 1px;
+}
+
+.card-back {
+    background-color: white;
+    padding: 1rem;
+}
+
+/* Card front colors */
+.card-front.bg-blue-50 {
+    background-color: #ebf8ff;
+    border-color: #bee3f8;
+}
+
+.card-front.bg-green-50 {
+    background-color: #f0fff4;
+    border-color: #c6f6d5;
+}
+
+.card-front.bg-yellow-50 {
+    background-color: #fffff0;
+    border-color: #fefcbf;
+}
+
+.card-front.bg-red-50 {
+    background-color: #fff5f5;
+    border-color: #fed7d7;
+}
+
+.card-front.bg-purple-50 {
+    background-color: #faf5ff;
+    border-color: #e9d8fd;
+}
+
+.card-front.bg-indigo-50 {
+    background-color: #ebf4ff;
+    border-color: #c3dafe;
+}
+
+/* Grid layout for cards */
+.grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Section titles */
+.section-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    color: #2b6cb0;
+}

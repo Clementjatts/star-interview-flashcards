@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STAR Method Flashcards - Optimized Layout</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f7f9fc;
+        }
+        .card {
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .card-front {
+            background-color: #ebf4ff;
+        }
+        .card-back {
+            background-color: white;
+        }
+        .tab-button {
+            transition: all 0.3s ease;
+        }
+        .tab-button.active {
+            background-color: #4299e1;
+            color: white;
+        }
+        @media print {
+            .tab-button-container {
+                display: none;
+            }
+            .tab-content {
+                display: block !important;
+                page-break-inside: avoid;
+                margin-bottom: 2rem;
+            }
+            .section-title {
+                margin-top: 2rem;
+                margin-bottom: 1rem;
+                font-size: 1.5rem;
+                font-weight: bold;
+                color: #2d3748;
+            }
+            body {
+                background-color: white;
+            }
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+    <div class="max-w-6xl mx-auto">
+        <h1 class="text-3xl font-bold text-center mb-6 text-blue-700">STAR Method Flashcards for Behavioral Interviews</h1>
+        <p class="text-center mb-8 text-gray-600">Interactive flashcards to help you master the STAR method for behavioral interview questions</p>
+        
+        <!-- Tab Navigation -->
+        <div class="tab-button-container flex flex-wrap justify-center mb-8">
+            <button class="tab-button active px-4 py-2 m-1 rounded-md bg-blue-100 text-blue-800" onclick="openTab(event, 'basics')">
+                <i class="fas fa-info-circle mr-2"></i>Basics
+            </button>
+            <button class="tab-button px-4 py-2 m-1 rounded-md bg-blue-100 text-blue-800" onclick="openTab(event, 'components')">
+                <i class="fas fa-puzzle-piece mr-2"></i>STAR Components
+            </button>
+            <button class="tab-button px-4 py-2 m-1 rounded-md bg-blue-100 text-blue-800" onclick="openTab(event, 'questions')">
+                <i class="fas fa-question-circle mr-2"></i>Question Types
+            </button>
+            <button class="tab-button px-4 py-2 m-1 rounded-md bg-blue-100 text-blue-800" onclick="openTab(event, 'tips')">
+                <i class="fas fa-lightbulb mr-2"></i>Tips & Mistakes
+            </button>
+            <button class="tab-button px-4 py-2 m-1 rounded-md bg-blue-100 text-blue-800" onclick="openTab(event, 'examples')">
+                <i class="fas fa-check-circle mr-2"></i>Model Answers
+            </button>
+            <button class="tab-button px-4 py-2 m-1 rounded-md bg-blue-100 text-blue-800" onclick="openTab(event, 'practice')">
+                <i class="fas fa-dumbbell mr-2"></i>Practice
+            </button>
+        </div>
+
+        <!-- Basics Tab -->
+        <div id="basics" class="tab-content active">
+            <h2 class="text-2xl font-bold mb-6 text-blue-800 section-title">STAR Method Basics</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Card 1 -->
+                <div class="card">
+                    <div class="card-front p-4 bg-blue-50 border-b border-blue-200">
+                        <h3 class="text-xl font-semibold text-blue-700">What is the STAR Method?</h3>
+                    </div>
+                    <div class="card-back p-4">
+                        <p>The STAR method is a structured technique for answering behavioral interview questions by describing a specific:</p>
+                        <ul class="list-disc ml-5 mt-2">
+                            <li><strong>S</strong>ituation: Set the context</li>
+                            <li><strong>T</strong>ask: Explain your responsibility</li>
+                            <li><strong>A</strong>ction: Describe what you did</li>
+                            <li><strong>R</strong>esult: Share the outcome</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="card">
+                    <div class="card-front p-4 bg-blue-50 border-b border-blue-200">
+                        <h3 class="text-xl font-semibold text-blue-700">Why Use the STAR Method?</h3>
+                    </div>
+                    <div class="card-back p-4">
+                        <ul class="list-disc ml-5">
+                            <li>Provides a clear, concise structure for your answers</li>
+                            <li>Ensures you cover all essential elements of your experience</li>
+                            <li>Helps interviewers assess your competencies systematically</li>
+                            <li>Prevents rambling or unfocused responses</li>
+                            <li>Demonstrates your communication skills and logical thinking</li>
+                            <li>Makes your accomplishments and skills more memorable</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="card">
+                    <div class="card-front p-4 bg-blue-50 border-b border-blue-200">
+                        <h3 class="text-xl font-semibold text-blue-700">When to Use the STAR Method</h3>
+                    </div>
+                    <div class="card-back p-4">
+                        <p>Use the STAR method when answering questions that start with:</p>
+                        <ul class="list-disc ml-5 mt-2">
+                            <li>"Tell me about a time when..."</li>
+                            <li>"Describe a situation where..."</li>
+                            <li>"Give me an example of..."</li>
+                            <li>"Share an experience when you..."</li>
+                            <li>Any question asking for a specific example from your past experience</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Card 4 -->
+                <div class="card">
+                    <div class="card-front p-4 bg-blue-50 border-b border-blue-200">
+                        <h3 class="text-xl font-semibold text-blue-700">Preparing STAR Stories</h3>
+                    </div>
+                    <div class="card-back p-4">
+                        <ol class="list-decimal ml-5">
+                            <li>Review the job description to identify key competencies</li>
+                            <li>Prepare 2-3 stories for each major competency</li>
+                            <li>Create a personal achievement inventory</li>
+                            <li>Structure each story using STAR format</li>
+                            <li>Practice telling your stories aloud (aim for 1-2 minutes each)</li>
+                            <li>Focus on quantifiable results whenever possible</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STAR Components Tab -->
+        <div id="components" class="tab-content">
+            <h2 class="text-2xl font-bold mb-6 text-blue-800 section-title">STAR Components Breakdown</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Situation Card -->
+                <div class="card">
+                    <div class="card-front p-4 bg-green-50 border-b border-green-200">
+                        <h3 class="text-xl font-semibold text-green-700">S - Situation</h3>
+                    </div>
+                    <div class="card-back p-4">
+                        <p class="mb-2"><strong>Set the scene and provide context</strong></p>
+                        <p class="mb-2">Guiding questions:</p>
+                        <ul class="list-disc ml-5">
+                            <li>When and where did this take place?</li>
+                            <li>What was the background or context?</li>
+                            <li>Who else was involved?</li>
+                            <li>What were the surrounding circumstances?</li>
+                        </ul>
+                        <p class="mt-2 text-sm text-gray-600">Keep this brief (1-2 sentences) - just enough to understand the context.</p>
+                    </div>
+                </div>
+                
+                <!-- Task Card -->
+                <div class="card">
+                    <div class="card-front p-4 bg-yellow-50 border-b border-yellow-200">
+                        <h3 class="text-xl font-semibold text-yellow-700">T - Task</h3>
+                    </div>
+                    <div class="card-back p-4">
+                        <p class="mb-2"><strong>Explain your responsibility or challenge</strong></p>
+                        <p class="mb-2">Guiding questions:</p>
+                        <ul class="list-disc ml-5">
+                            <li>What was your specific role or assignment?</li>
+                            <li>What was the problem or challenge you faced?</li>
+                            <li>What goals were you trying to achieve?</li>
+                            <li>What were the expectations or deadlines?</li>
+                        </ul>
+                        <p class="mt-2 text-sm text-gray-600">Focus on YOUR task, not the team's general objective.</p>
+                    </div>
+                </div>
+                
+                <!-- Action Card -->
+                <div class="card">
+                    <div class="card-front p-4 bg-red-50 border-b border-red-200">
+                        <h3 class="text-xl font-semibold text-red-700">A - Action</h3>
+                    </div>
+                    <div class="card-back p-4">
+                        <p class="mb-2"><strong>Describe what YOU did and how you did it</strong></p>
+                        <p class="mb-2">Guiding questions:</p>
+                        <ul class="list-disc ml-5">
+                            <li>What specific steps did you take?</li>
+                            <li>How did you approach the problem?</li>
+                            <li>What skills or knowledge did you apply?</li>
+                            <li>How did you overcome obstacles?</li>
+                            <li>What made your approach effective?</li>
+                        </ul>
+                        <p class="mt-2 text-sm text-gray-600">This should be the longest part of your answer. Use "I" statements, not "we."</p>
+                    </div>
+                </div>
+                
+                <!-- Result Card -->
+                <div class="card">
+                    <div class="card-front p-4 bg-purple-50 border-b border-purple-200">
+                        <h3 class="text-xl font-semibold text-purple-700">R - Result</h3>
+                    </div>
+                    <div class="card-back p-4">
+                        <p class="mb-2"><strong>Share the outcome and what you learned</strong></p>
+                        <p class="mb-2">Guiding questions:</p>
+                        <ul class="list-disc ml-5">
+                            <li>What was the outcome of your actions?</li>
+                            <li>How did you measure success?</li>
+                            <li>What did you accomplish or learn?</li>
+                            <li>How did it benefit your team/company?</li>
+                            <li>What quantifiable metrics can you share?</li>
+                        </ul>
+                        <p class="mt-2 text-sm text-gray-600">Include specific numbers/percentages whenever possible. Even if the outcome wasn't perfect, share what you learned.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Question Types Tab -->
+        <div id="questions" class="tab-content">
+            <h2 class="text-2xl font-bold mb-6 text-blue-800 section-title">Common Behavioral Question Types</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Teamwork Card -->
+                <div class="card">
+                    <div class="card-front p-4 bg-blue-50 border-b border-blue-200">
+                        <h3 class="text-xl font-semibold text-blue-700">Teamwork Questions</h3>
+                    </div>
+                    <div class="card-back p-4">
+                        <ul class="list-disc ml-5">
+                            <li>Tell me about a time you worked effectively in a team.</li>
+                            <li>Describe a situation where you had to collaborate with a difficult team member.</li>
+                            <li>Give an example of how you contributed to a team project.</li>
+                            <li>Share a time when you had to step up as a team leader.</li>
+                            <li>Tell me about a conflict you faced in a team and how you resolved it.</li>
+                        </ul>
+                        <p class="mt-2 text-sm text-gray-600"><strong>Focus on:</strong> Collaboration skills, conflict resolution, your specific role, and positive outcomes.</p>
+                    </div>
+                </div>
+                
+                <!-- Problem-Solving Card -->
+                <div class="card">
+                    <div class="card-front p-4 bg-green-50 border-b border-green-200">
+                        <h3 class="text-xl font-semibold text-green-700">Problem-Solving Questions</h3>
+                    </div>
+                    <div class="card-back p-4">
+                        <ul class="list-disc ml-5">
+                            <li>Describe a complex problem you solved at work.</li>
+                            <li>Tell me about a time you had to think outside the box.</li>
+                            <li>Share an example of a time you identified and solved a problem before it became critical.</li>
+                            <li>Describe a situation where you had to analyze data to solve a problem.</li>
+                            <li>Give an example of a time you used creativity to overcome a obstacle.</li>
+                        </ul>
+                        <p class="mt-2 text-sm text-gray-600"><strong>Focus on:</strong> Your analytical process, creative thinking, and measurable results.</p>
+                    </div>
+                </div>
+                
+                <!-- Leadership Card -->
+                <div class="card">
+                    <div class="card-front p-4 bg-yellow-50 border-b border-yellow-200">
+                        <h3 class="text-xl font-semibold text-yellow-700">Leadership Questions</h3>
+                    </div>
+                    <div class="card-back p-4">
+                        <ul class="list-disc ml-5">
+                            <li>Tell me about a time you led a project or team.</li>
+                            <li>Describe a situation where you had to motivate others.</li>
+                            <li>Share an example of when you delegated tasks effectively.</li>
+                            <li>Give an example of how you've mentored or developed someone.</li>
+                            <li>Tell me about a time you had to make an unpopular decision.</li>
+                        </ul>
+                        <p class="mt-2 text-sm text-gray-600"><strong>Focus on:</strong> Your leadership style, how you influenced others, and the impact of your leadership.</p>
+                    </div>
+                </div>
+                
+                <!-- Handling Failure Card -->
+                <div class="card">
+                    <div class="card-front p-4 bg-red-50 border-b border-red-200">
+                        <h3 class="text-xl font-semibold text-red-700">Handling Failure Questions</h3>
+                    </div>
+                    <div class="card-back p-4">
+                        <ul class="list-disc ml-5">
+                            <li>Tell me about a time you failed at something.</li>
+                            <li>Describe a mistake you made at work and how you handled it.</li>
+                            <li>Share an example of a project that didn't go as planned.</li>
+                            <li>Tell me about a time you received negative feedback.</li>
+                            <li>Describe how you've bounced back from a setback.</li>
+                        </ul>
+                        <p class="mt-2 text-sm text-gray-600"><strong>Focus on:</strong> What you learned, how you improved, and how you applied those lessons later.</p>
+                    </div>
+                </div>
+                
+                <!-- Initiative Card -->
+                <div class="card">
+                    <div class="card-front p-4 bg-purple-50 border-b border-purple-200">
+                        <h3 class="text-xl font-semibold text-purple-700">Initiative Questions</h3>
+                    </div>
+                    <div class="card-back p-4">
+                        <ul class="list-disc ml-5">
+                            <li>Tell me about a time you went above and beyond.</li>
+                            <li>Describe a situation where you identified an opportunity others missed.</li>
+                            <li>Share an example of how you've shown initiative.</li>
+                            <li>Tell me about a time you implemented a new idea or process.</li>
+                            <li>Give an example of how you've taken ownership of a project.</li>
+                        </ul>
+                        <p class="mt-2 text-sm text-gray-600"><strong>Focus on:</strong> Your proactive approach, self-motivation, and the positive impact of your initiative.</p>
+                    </div>
+                </div>
+                
+                <!-- Adaptability Card -->
+                <div class="card">
+                    <div class="card-front p-4 bg-indigo-50 border-b border-indigo-200">
+                        <h3 class="text-xl font-semibold text-indigo-700">Adaptability Questions</h3>
+                    </div>
+                    <div class="card-back p-4">
+                        <ul class="list-disc ml-5">
+                            <li>Tell me about a time you had to adapt to a significant change.</li>
+                            <li>Describe a situation where you had to learn something new quickly.</li>
+                            <li>Share an example of how you've handled multiple priorities.</li>
+                            <li>Tell me about a time you worked under pressure or tight deadlines.</li>
+                            <li>Describe how you've adapted to unexpected challenges.</li>
+                        </ul>
+                        <p class="mt-2 text-sm text-gray-600"><strong>Focus on:</strong> Your flexibility, resilience, and ability to thrive in changing circumstances.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tips & Mistakes Tab -->
+        <div id="tips" class="tab-content">
+            <h2 class="text-2xl font-bold mb-6 text-blue-800 section-title">Tips & Common Mistakes</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Action Tips Card -->
+                <div class="card">
+                    <div class="card-front p-4 bg-green-50 border-b border-green-200">
+                        <h3 class="text-xl font-semibold text-green-700">Tips for Impactful "Action" Sections</h3>
+                    </div>
+                    <div class="card-back p-4">
+                        <ul class="list-disc ml-5">
+                            <li><strong>Use "I" statements</strong> - Focus on your personal contributions</li>
+                            <li><strong>Be specific</strong> - Detail your exact steps and decisions</li>
+                            <li><strong>Highlight relevant skills</strong> - Connect your actions to job requirements</li>
+                            <li><strong>Explain your reasoning</strong> - Share why you chose that approach</li>
+                            <li><strong>Include challenges overcome</strong> - Show resilience and problem-solving</li>
+                            <li><strong>Quantify where possible</strong> - "I managed a team of 5" is better than "I managed a team"</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Result Tips Card -->
+                <div class="card">
+                    <div class="card-front p-4 bg-blue-50 border-b border-blue-200">
+                        <h3 class="text-xl font-semibold text-blue-700">Tips for Quantifiable "Result" Sections</h3>
+                    </div>
+                    <div class="card-back p-4">
+                        <ul class="list-disc ml-5">
+                            <li><strong>Use numbers</strong> - Percentages, amounts, timelines, etc.</li>
+                            <li><strong>Focus on business impact</strong> - Revenue, cost savings, efficiency</li>
+                            <li><strong>Include personal growth</strong> - Skills gained, recognition received</li>
+                            <li><strong>Address both tangible and intangible outcomes</strong> - Include improved relationships or processes</li>
+                            <li><strong>Connect to broader goals</strong> - How your result supported company objectives</li>
+                            <li><strong>For negative outcomes</strong> - Focus on lessons learned and how you applied them</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Common Mistakes Card 1 -->
+                <div class="card">
+                    <div class="card-front p-4 bg-red-50 border-b border-red-200">
+                        <h3 class="text-xl font-semibold text-red-700">Common Mistakes to Avoid (Part 1)</h3>
+                    </div>
+                    <div class="card-back p-4">
+                        <ul class="list-disc ml-5">
+                            <li><strong>Being too vague</strong> - Lack of specific details makes answers forgettable</li>
+                            <li><strong>Using "we" instead of "I"</strong> - Makes your personal contribution unclear</li>
+                            <li><strong>Choosing weak examples</strong> - Select meaningful situations that showcase your skills</li>
+                            <li><strong>Not preparing enough stories</strong> - Have 5-7 versatile examples ready</li>
+                            <li><strong>Rambling</strong> - Keep responses concise and structured (1-2 minutes total)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Common Mistakes Card 2 -->
+                <div class="card">
+                    <div class="card-front p-4 bg-red-50 border-b border-red-200">
+                        <h3 class="text-xl font-semibold text-red-700">Common Mistakes to Avoid (Part 2)</h3>
+                    </div>
+                    <div class="card-back p-4">
+                        <ul class="list-disc ml-5">
+                            <li><strong>Focusing too much on the Situation</strong> - Keep context brief to focus on Action and Result</li>
+                            <li><strong>Not tailoring examples to the role</strong> - Choose stories relevant to the position</li>
+                            <li><strong>Exaggerating accomplishments</strong> - Be honest and accurate</li>
+                            <li><strong>Not practicing aloud</strong> - Rehearse to ensure smooth delivery</li>
+                            <li><strong>Missing the "So what?" factor</strong> - Make sure your example clearly demonstrates the competency</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- STAR Structure Tips -->
+                <div class="card">
+                    <div class="card-front p-4 bg-purple-50 border-b border-purple-200">
+                        <h3 class="text-xl font-semibold text-purple-700">STAR Response Structure Tips</h3>
+                    </div>
+                    <div class="card-back p-4">
+                        <ul class="list-disc ml-5">
+                            <li><strong>Situation & Task</strong>: ~25% of your answer (3-4 sentences)</li>
+                            <li><strong>Action</strong>: ~50% of your answer (most detailed section)</li>
+                            <li><strong>Result</strong>: ~25% of your answer (end on a strong note)</li>
+                            <li><strong>Total length</strong>: Aim for 1-2 minutes per response</li>
+                            <li><strong>Practice transitions</strong> between sections for a smoother delivery</li>
+                            <li><strong>Signal structure</strong> with phrases like "The situation was..." or "As a result..."</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Delivery Tips -->
+                <div class="card">
+                    <div class="card-front p-4 bg-yellow-50 border-b border-yellow-200">
+                        <h3 class="text-xl font-semibold text-yellow-700">STAR Response Delivery Tips</h3>
+                    </div>
+                    <div class="card-back p-4">
+                        <ul class="list-disc ml-5">
+                            <li><strong>Pause briefly</strong> when asked a behavioral question to collect your thoughts</li>
+                            <li><strong>Use transitional phrases</strong> to guide the interviewer through your answer</li>
+                            <li><strong>Maintain eye contact</strong> to demonstrate confidence</li>
+                            <li><strong>Speak with enthusiasm</strong> when describing your actions and results</li>
+                            <li><strong>Practice vocal variety</strong> to keep the interviewer engaged</li>
+                            <li><strong>End with a confident conclusion</strong> that summarizes your impact</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Model Answers Tab -->
+        <div id="examples" class="tab-content">
+            <h2 class="text-2xl font-bold mb-6 text-blue-800 section-title">Model STAR Answers</h2>
+            
+            <!-- Example 1 -->
+            <div class="card mb-8">
+                <div class="card-front p-4 bg-blue-50 border-b border-blue-200">
+                    <h3 class="text-xl font-semibold text-blue-700">Example 1: Leadership Question</h3>
+                    <p class="text-gray-700">Question: "Tell me about a time when you led a team through a difficult project."</p>
+                </div>
+                <div class="card-back p-4">
+                    <div class="bg-blue-50 p-3 rounded-md mb-3">
+                        <p class="font-bold text-blue-800">Situation:</p>
+                        <p>Last year at XYZ Company, our team was assigned a critical client project with a tight six-week deadline. The client was a major financial institution, and our previous project manager had unexpectedly left the company.</p>
+                    </div>
+                    
+                    <div class="bg-yellow-50 p-3 rounded-md mb-3">
+                        <p class="font-bold text-yellow-800">Task:</p>
+                        <p>As the senior team member with the most domain knowledge, I was asked to step in as project lead for a team of five developers. We needed to deliver a custom reporting dashboard while maintaining our regular responsibilities.</p>
+                    </div>
+                    
+                    <div class="bg-red-50 p-3 rounded-md mb-3">
+                        <p class="font-bold text-red-800">Action:</p>
+                        <p>I immediately organized a team meeting to assess everyone's current workload and capabilities. I created a detailed project plan with clear milestones and accountability measures. Recognizing team members' strengths, I redistributed tasks more effectively, pairing more experienced developers with junior ones. I implemented daily 15-minute stand-up meetings to address roadblocks quickly and scheduled twice-weekly check-ins with the client to ensure alignment. When we faced a technical challenge in week three, I arranged a focused problem-solving session and personally worked extra hours to research solutions.</p>
+                    </div>
+                    
+                    <div class="bg-green-50 p-3 rounded-md">
+                        <p class="font-bold text-green-800">Result:</p>
+                        <p>We successfully delivered the project two days ahead of schedule, with all requirements met. The client was so impressed with our work and communication that they increased their contract value by 30% for the following year. My leadership was recognized by management, and I was formally promoted to project manager. Three team members specifically mentioned in their reviews that they felt supported and had grown professionally through the project.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Example 2 -->
+            <div class="card mb-8">
+                <div class="card-front p-4 bg-green-50 border-b border-green-200">
+                    <h3 class="text-xl font-semibold text-green-700">Example 2: Problem-Solving Question</h3>
+                    <p class="text-gray-700">Question: "Describe a time when you solved a significant problem at work."</p>
+                </div>
+                <div class="card-back p-4">
+                    <div class="bg-blue-50 p-3 rounded-md mb-3">
+                        <p class="font-bold text-blue-800">Situation:</p>
+                        <p>While working as a customer service representative at ABC Retail, we experienced a sudden 40% increase in customer complaints about delayed deliveries during the holiday season last year.</p>
+                    </div>
+                    
+                    <div class="bg-yellow-50 p-3 rounded-md mb-3">
+                        <p class="font-bold text-yellow-800">Task:</p>
+                        <p>I needed to identify the root cause of the delays and find a solution quickly to prevent customer dissatisfaction and potential loss of holiday sales.</p>
+                    </div>
+                    
+                    <div class="bg-red-50 p-3 rounded-md mb-3">
+                        <p class="font-bold text-red-800">Action:</p>
+                        <p>I collected and analyzed data from our last 200 orders, tracking exactly where delays were occurring. I created a spreadsheet to identify patterns and discovered that most delays happened with orders containing multiple items from different warehouse locations. I met with the warehouse and logistics teams to understand their processes. Based on this information, I proposed a temporary solution to group orders by location during processing and a more efficient picking route. I also drafted a communication template for transparent updates to affected customers, which I tested with a small group before full implementation.</p>
+                    </div>
+                    
+                    <div class="bg-green-50 p-3 rounded-md">
+                        <p class="font-bold text-green-800">Result:</p>
+                        <p>Within two weeks, delivery delays decreased by 65%. Customer complaints dropped by 70%, and our customer satisfaction score rebounded from 72% to 86%. My communication template was adopted as the company standard. Management implemented my process changes permanently, and I was asked to lead a small team to further optimize our fulfillment processes. The company estimated that these improvements saved approximately $30,000 in potential lost sales and customer recovery costs.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Example 3 -->
+            <div class="card">
+                <div class="card-front p-4 bg-purple-50 border-b border-purple-200">
+                    <h3 class="text-xl font-semibold text-purple-700">Example 3: Handling Failure Question</h3>
+                    <p class="text-gray-700">Question: "Tell me about a time you failed to meet a deadline. How did you handle it?"</p>
+                </div>
+                <div class="card-back p-4">
+                    <div class="bg-blue-50 p-3 rounded-md mb-3">
+                        <p class="font-bold text-blue-800">Situation:</p>
+                        <p>At my previous role as a marketing coordinator at DEF Agency, I was leading the creation of promotional materials for a client's product launch. This was a high-profile client who had specific requirements and a firm timeline.</p>
+                    </div>
+                    
+                    <div class="bg-yellow-50 p-3 rounded-md mb-3">
+                        <p class="font-bold text-yellow-800">Task:</p>
+                        <p>I was responsible for coordinating with design, copywriting, and client approval to deliver the final materials to the printer by May 15th, three weeks before the launch event.</p>
+                    </div>
+                    
+                    <div class="bg-red-50 p-3 rounded-md mb-3">
+                        <p class="font-bold text-red-800">Action:</p>
+                        <p>I created what I thought was a reasonable timeline, but I failed to build in buffer time for revisions. When the client requested significant changes during the final review, we missed our printing deadline by four days. As soon as I realized we would miss the deadline, I immediately contacted the client to acknowledge the issue. I explored rush printing options and negotiated priority service with our printer based on our long-standing relationship. I also developed a detailed day-by-day plan for the remaining work to ensure no further delays and personally reviewed each deliverable before it went to the client.</p>
+                    </div>
+                    
+                    <div class="bg-green-50 p-3 rounded-md">
+                        <p class="font-bold text-green-800">Result:</p>
+                        <p>Despite the initial delay, we delivered the materials just one day later than the original timeline by expediting shipping. The client appreciated my transparency and problem-solving approach, and the product launch was still successful. From this experience, I developed a new project timeline template that includes built-in buffer time for each stage. I also implemented a mid-project check-in with clients to catch potential revision needs earlier. I've since managed 12 similar projects using these improved methods, and all have been delivered on time.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Practice Tab -->
+        <div id="practice" class="tab-content">
+            <h2 class="text-2xl font-bold mb-6 text-blue-800 section-title">Practice Questions</h2>
+            <p class="mb-6">For each question, practice structuring your response using the STAR method. Write down or record your answers, then review them to ensure you've included all components effectively.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Practice Card 1 -->
+                <div class="card">
+                    <div class="card-front p-4 bg-blue-50">
+                        <h3 class="text-xl font-semibold text-blue-700">Teamwork Practice Question</h3>
+                        <p class="mt-2">Tell me about a time when you had to work with someone who was difficult to get along with. How did you handle the situation?</p>
+                        <div class="mt-3 bg-white p-3 rounded-md border border-blue-200">
+                            <p class="font-bold text-blue-800">Your STAR Response Framework:</p>
+                            <p class="mt-1"><strong>Situation:</strong> Describe the context and the difficult person.</p>
+                            <p class="mt-1"><strong>Task:</strong> What did you need to accomplish with this person?</p>
+                            <p class="mt-1"><strong>Action:</strong> What specific steps did you take to work effectively with them?</p>
+                            <p class="mt-1"><strong>Result:</strong> What was the outcome of your approach?</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Practice Card 2 -->
+                <div class="card">
+                    <div class="card-front p-4 bg-green-50">
+                        <h3 class="text-xl font-semibold text-green-700">Problem-Solving Practice Question</h3>
+                        <p class="mt-2">Describe a situation where you had to analyze data or information to solve a complex problem.</p>
+                        <div class="mt-3 bg-white p-3 rounded-md border border-green-200">
+                            <p class="font-bold text-green-800">Your STAR Response Framework:</p>
+                            <p class="mt-1"><strong>Situation:</strong> What was the problem and its context?</p>
+                            <p class="mt-1"><strong>Task:</strong> What was your specific responsibility in solving it?</p>
+                            <p class="mt-1"><strong>Action:</strong> How did you analyze the data and develop a solution?</p>
+                            <p class="mt-1"><strong>Result:</strong> What was the outcome? Include metrics if possible.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Practice Card 3 -->
+                <div class="card">
+                    <div class="card-front p-4 bg-yellow-50">
+                        <h3 class="text-xl font-semibold text-yellow-700">Leadership Practice Question</h3>
+                        <p class="mt-2">Give me an example of a time when you successfully motivated a team during a challenging period.</p>
+                        <div class="mt-3 bg-white p-3 rounded-md border border-yellow-200">
+                            <p class="font-bold text-yellow-800">Your STAR Response Framework:</p>
+                            <p class="mt-1"><strong>Situation:</strong> What was the challenging period? Set the context.</p>
+                            <p class="mt-1"><strong>Task:</strong> What was your leadership role and goal?</p>
+                            <p class="mt-1"><strong>Action:</strong> How did you motivate the team? What leadership techniques did you use?</p>
+                            <p class="mt-1"><strong>Result:</strong> How did the team respond? What were the outcomes?</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Practice Card 4 -->
+                <div class="card">
+                    <div class="card-front p-4 bg-red-50">
+                        <h3 class="text-xl font-semibold text-red-700">Initiative Practice Question</h3>
+                        <p class="mt-2">Tell me about a time when you identified and seized an opportunity that others might have missed.</p>
+                        <div class="mt-3 bg-white p-3 rounded-md border border-red-200">
+                            <p class="font-bold text-red-800">Your STAR Response Framework:</p>
+                            <p class="mt-1"><strong>Situation:</strong> What was the context where you spotted the opportunity?</p>
+                            <p class="mt-1"><strong>Task:</strong> Why was addressing this opportunity important?</p>
+                            <p class="mt-1"><strong>Action:</strong> How did you take initiative? What steps did you take?</p>
+                            <p class="mt-1"><strong>Result:</strong> What was the impact of your initiative?</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Practice Card 5 -->
+                <div class="card">
+                    <div class="card-front p-4 bg-purple-50">
+                        <h3 class="text-xl font-semibold text-purple-700">Adaptability Practice Question</h3>
+                        <p class="mt-2">Describe a situation where you had to adapt to a significant change at work with little notice.</p>
+                        <div class="mt-3 bg-white p-3 rounded-md border border-purple-200">
+                            <p class="font-bold text-purple-800">Your STAR Response Framework:</p>
+                            <p class="mt-1"><strong>Situation:</strong> What was the unexpected change?</p>
+                            <p class="mt-1"><strong>Task:</strong> What did you need to accomplish despite the change?</p>
+                            <p class="mt-1"><strong>Action:</strong> How did you adapt? What steps did you take?</p>
+                            <p class="mt-1"><strong>Result:</strong> How successful was your adaptation? What did you learn?</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Practice Card 6 -->
+                <div class="card">
+                    <div class="card-front p-4 bg-indigo-50">
+                        <h3 class="text-xl font-semibold text-indigo-700">Conflict Resolution Practice Question</h3>
+                        <p class="mt-2">Tell me about a time when you had to resolve a conflict between team members.</p>
+                        <div class="mt-3 bg-white p-3 rounded-md border border-indigo-200">
+                            <p class="font-bold text-indigo-800">Your STAR Response Framework:</p>
+                            <p class="mt-1"><strong>Situation:</strong> What was the conflict and who was involved?</p>
+                            <p class="mt-1"><strong>Task:</strong> What was your role in addressing the conflict?</p>
+                            <p class="mt-1"><strong>Action:</strong> How did you approach resolving it? What conflict resolution techniques did you use?</p>
+                            <p class="mt-1"><strong>Result:</strong> How was the conflict resolved? How did it affect the team afterward?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                <h3 class="text-xl font-semibold text-blue-700 mb-2">Practice Tips</h3>
+                <ul class="list-disc ml-5">
+                    <li>Record yourself answering these questions and review the recording</li>
+                    <li>Time your responses to keep them under 2 minutes</li>
+                    <li>Practice with a friend who can provide feedback</li>
+                    <li>Create an "achievement journal" to catalog experiences you can draw from</li>
+                    <li>Customize your examples for different job applications</li>
+                    <li>Focus on recent experiences (within the last 2-3 years) whenever possible</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function openTab(evt, tabName) {
+            // Hide all tab content
+            var tabContent = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabContent.length; i++) {
+                tabContent[i].classList.remove("active");
+            }
+            
+            // Remove active class from tab buttons
+            var tabButtons = document.getElementsByClassName("tab-button");
+            for (var i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+            
+            // Show the current tab and add active class to button
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>

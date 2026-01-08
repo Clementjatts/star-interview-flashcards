@@ -1,0 +1,315 @@
+<h2 class="text-2xl font-bold mb-6 text-blue-800 section-title">Practice Questions</h2>
+
+<!-- Practice Timer -->
+<div class="practice-timer">
+    <div class="timer-display" id="timerDisplay">2:00</div>
+    <div class="timer-controls">
+        <button class="timer-btn" id="timerStart" title="Start/Pause Timer">
+            <i class="fas fa-play"></i>
+        </button>
+        <button class="timer-btn" id="timerReset" title="Reset Timer">
+            <i class="fas fa-redo"></i>
+        </button>
+    </div>
+    <span style="color: var(--text-muted); font-size: 0.875rem;">
+        <i class="fas fa-info-circle"></i> Aim for 1-2 minute responses
+    </span>
+</div>
+
+<p class="mb-6">For each question, practice structuring your response using the STAR method. Your drafts are
+    automatically saved.</p>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <!-- Practice Card 1: Teamwork -->
+    <div class="card practice-card">
+        <div class="card-front p-4 bg-blue-50 border-b border-blue-200">
+            <h3 class="text-xl font-semibold text-blue-700">
+                <i class="fas fa-users"></i> Teamwork Practice
+            </h3>
+            <p class="mt-2" style="color: var(--text-secondary);">Tell me about a time when you had to work with someone
+                who was difficult to get along with. How did you handle the situation?</p>
+        </div>
+        <div class="card-back p-4">
+            <div class="practice-input-group">
+                <label><span style="color: var(--situation-color);">●</span> Situation</label>
+                <textarea data-question="teamwork" data-section="situation"
+                    placeholder="Describe the context and the difficult person..."></textarea>
+                <div class="char-count">0 characters</div>
+            </div>
+            <div class="practice-input-group">
+                <label><span style="color: var(--task-color);">●</span> Task</label>
+                <textarea data-question="teamwork" data-section="task"
+                    placeholder="What did you need to accomplish with this person?"></textarea>
+                <div class="char-count">0 characters</div>
+            </div>
+            <div class="practice-input-group">
+                <label><span style="color: var(--action-color);">●</span> Action</label>
+                <textarea data-question="teamwork" data-section="action"
+                    placeholder="What specific steps did you take to work effectively with them?"></textarea>
+                <div class="char-count">0 characters</div>
+            </div>
+            <div class="practice-input-group">
+                <label><span style="color: var(--result-color);">●</span> Result</label>
+                <textarea data-question="teamwork" data-section="result"
+                    placeholder="What was the outcome of your approach?"></textarea>
+                <div class="char-count">0 characters</div>
+            </div>
+            <div class="practice-buttons">
+                <button class="practice-btn practice-btn-primary" onclick="exportAnswer('teamwork')">
+                    <i class="fas fa-copy"></i> Copy Answer
+                </button>
+                <button class="practice-btn practice-btn-secondary" onclick="clearDraft('teamwork')">
+                    <i class="fas fa-trash"></i> Clear
+                </button>
+                <span class="saved-indicator"><i class="fas fa-check"></i> Saved</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Practice Card 2: Problem-Solving -->
+    <div class="card practice-card">
+        <div class="card-front p-4 bg-green-50 border-b border-green-200">
+            <h3 class="text-xl font-semibold text-green-700">
+                <i class="fas fa-lightbulb"></i> Problem-Solving Practice
+            </h3>
+            <p class="mt-2" style="color: var(--text-secondary);">Describe a situation where you had to analyze data or
+                information to solve a complex problem.</p>
+        </div>
+        <div class="card-back p-4">
+            <div class="practice-input-group">
+                <label><span style="color: var(--situation-color);">●</span> Situation</label>
+                <textarea data-question="problem-solving" data-section="situation"
+                    placeholder="What was the problem and its context?"></textarea>
+                <div class="char-count">0 characters</div>
+            </div>
+            <div class="practice-input-group">
+                <label><span style="color: var(--task-color);">●</span> Task</label>
+                <textarea data-question="problem-solving" data-section="task"
+                    placeholder="What was your specific responsibility in solving it?"></textarea>
+                <div class="char-count">0 characters</div>
+            </div>
+            <div class="practice-input-group">
+                <label><span style="color: var(--action-color);">●</span> Action</label>
+                <textarea data-question="problem-solving" data-section="action"
+                    placeholder="How did you analyze the data and develop a solution?"></textarea>
+                <div class="char-count">0 characters</div>
+            </div>
+            <div class="practice-input-group">
+                <label><span style="color: var(--result-color);">●</span> Result</label>
+                <textarea data-question="problem-solving" data-section="result"
+                    placeholder="What was the outcome? Include metrics if possible."></textarea>
+                <div class="char-count">0 characters</div>
+            </div>
+            <div class="practice-buttons">
+                <button class="practice-btn practice-btn-primary" onclick="exportAnswer('problem-solving')">
+                    <i class="fas fa-copy"></i> Copy Answer
+                </button>
+                <button class="practice-btn practice-btn-secondary" onclick="clearDraft('problem-solving')">
+                    <i class="fas fa-trash"></i> Clear
+                </button>
+                <span class="saved-indicator"><i class="fas fa-check"></i> Saved</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Practice Card 3: Leadership -->
+    <div class="card practice-card">
+        <div class="card-front p-4 bg-yellow-50 border-b border-yellow-200">
+            <h3 class="text-xl font-semibold text-yellow-700">
+                <i class="fas fa-crown"></i> Leadership Practice
+            </h3>
+            <p class="mt-2" style="color: var(--text-secondary);">Give me an example of a time when you successfully
+                motivated a team during a challenging period.</p>
+        </div>
+        <div class="card-back p-4">
+            <div class="practice-input-group">
+                <label><span style="color: var(--situation-color);">●</span> Situation</label>
+                <textarea data-question="leadership" data-section="situation"
+                    placeholder="What was the challenging period? Set the context."></textarea>
+                <div class="char-count">0 characters</div>
+            </div>
+            <div class="practice-input-group">
+                <label><span style="color: var(--task-color);">●</span> Task</label>
+                <textarea data-question="leadership" data-section="task"
+                    placeholder="What was your leadership role and goal?"></textarea>
+                <div class="char-count">0 characters</div>
+            </div>
+            <div class="practice-input-group">
+                <label><span style="color: var(--action-color);">●</span> Action</label>
+                <textarea data-question="leadership" data-section="action"
+                    placeholder="How did you motivate the team? What leadership techniques did you use?"></textarea>
+                <div class="char-count">0 characters</div>
+            </div>
+            <div class="practice-input-group">
+                <label><span style="color: var(--result-color);">●</span> Result</label>
+                <textarea data-question="leadership" data-section="result"
+                    placeholder="How did the team respond? What were the outcomes?"></textarea>
+                <div class="char-count">0 characters</div>
+            </div>
+            <div class="practice-buttons">
+                <button class="practice-btn practice-btn-primary" onclick="exportAnswer('leadership')">
+                    <i class="fas fa-copy"></i> Copy Answer
+                </button>
+                <button class="practice-btn practice-btn-secondary" onclick="clearDraft('leadership')">
+                    <i class="fas fa-trash"></i> Clear
+                </button>
+                <span class="saved-indicator"><i class="fas fa-check"></i> Saved</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Practice Card 4: Initiative -->
+    <div class="card practice-card">
+        <div class="card-front p-4 bg-red-50 border-b border-red-200">
+            <h3 class="text-xl font-semibold text-red-700">
+                <i class="fas fa-rocket"></i> Initiative Practice
+            </h3>
+            <p class="mt-2" style="color: var(--text-secondary);">Tell me about a time when you identified and seized an
+                opportunity that others might have missed.</p>
+        </div>
+        <div class="card-back p-4">
+            <div class="practice-input-group">
+                <label><span style="color: var(--situation-color);">●</span> Situation</label>
+                <textarea data-question="initiative" data-section="situation"
+                    placeholder="What was the context where you spotted the opportunity?"></textarea>
+                <div class="char-count">0 characters</div>
+            </div>
+            <div class="practice-input-group">
+                <label><span style="color: var(--task-color);">●</span> Task</label>
+                <textarea data-question="initiative" data-section="task"
+                    placeholder="Why was addressing this opportunity important?"></textarea>
+                <div class="char-count">0 characters</div>
+            </div>
+            <div class="practice-input-group">
+                <label><span style="color: var(--action-color);">●</span> Action</label>
+                <textarea data-question="initiative" data-section="action"
+                    placeholder="How did you take initiative? What steps did you take?"></textarea>
+                <div class="char-count">0 characters</div>
+            </div>
+            <div class="practice-input-group">
+                <label><span style="color: var(--result-color);">●</span> Result</label>
+                <textarea data-question="initiative" data-section="result"
+                    placeholder="What was the impact of your initiative?"></textarea>
+                <div class="char-count">0 characters</div>
+            </div>
+            <div class="practice-buttons">
+                <button class="practice-btn practice-btn-primary" onclick="exportAnswer('initiative')">
+                    <i class="fas fa-copy"></i> Copy Answer
+                </button>
+                <button class="practice-btn practice-btn-secondary" onclick="clearDraft('initiative')">
+                    <i class="fas fa-trash"></i> Clear
+                </button>
+                <span class="saved-indicator"><i class="fas fa-check"></i> Saved</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Practice Card 5: Adaptability -->
+    <div class="card practice-card">
+        <div class="card-front p-4 bg-purple-50 border-b border-purple-200">
+            <h3 class="text-xl font-semibold text-purple-700">
+                <i class="fas fa-sync-alt"></i> Adaptability Practice
+            </h3>
+            <p class="mt-2" style="color: var(--text-secondary);">Describe a situation where you had to adapt to a
+                significant change at work with little notice.</p>
+        </div>
+        <div class="card-back p-4">
+            <div class="practice-input-group">
+                <label><span style="color: var(--situation-color);">●</span> Situation</label>
+                <textarea data-question="adaptability" data-section="situation"
+                    placeholder="What was the unexpected change?"></textarea>
+                <div class="char-count">0 characters</div>
+            </div>
+            <div class="practice-input-group">
+                <label><span style="color: var(--task-color);">●</span> Task</label>
+                <textarea data-question="adaptability" data-section="task"
+                    placeholder="What did you need to accomplish despite the change?"></textarea>
+                <div class="char-count">0 characters</div>
+            </div>
+            <div class="practice-input-group">
+                <label><span style="color: var(--action-color);">●</span> Action</label>
+                <textarea data-question="adaptability" data-section="action"
+                    placeholder="How did you adapt? What steps did you take?"></textarea>
+                <div class="char-count">0 characters</div>
+            </div>
+            <div class="practice-input-group">
+                <label><span style="color: var(--result-color);">●</span> Result</label>
+                <textarea data-question="adaptability" data-section="result"
+                    placeholder="How successful was your adaptation? What did you learn?"></textarea>
+                <div class="char-count">0 characters</div>
+            </div>
+            <div class="practice-buttons">
+                <button class="practice-btn practice-btn-primary" onclick="exportAnswer('adaptability')">
+                    <i class="fas fa-copy"></i> Copy Answer
+                </button>
+                <button class="practice-btn practice-btn-secondary" onclick="clearDraft('adaptability')">
+                    <i class="fas fa-trash"></i> Clear
+                </button>
+                <span class="saved-indicator"><i class="fas fa-check"></i> Saved</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Practice Card 6: Conflict Resolution -->
+    <div class="card practice-card">
+        <div class="card-front p-4 bg-indigo-50 border-b border-indigo-200">
+            <h3 class="text-xl font-semibold text-indigo-700">
+                <i class="fas fa-balance-scale"></i> Conflict Resolution Practice
+            </h3>
+            <p class="mt-2" style="color: var(--text-secondary);">Tell me about a time when you had to resolve a
+                conflict between team members.</p>
+        </div>
+        <div class="card-back p-4">
+            <div class="practice-input-group">
+                <label><span style="color: var(--situation-color);">●</span> Situation</label>
+                <textarea data-question="conflict" data-section="situation"
+                    placeholder="What was the conflict and who was involved?"></textarea>
+                <div class="char-count">0 characters</div>
+            </div>
+            <div class="practice-input-group">
+                <label><span style="color: var(--task-color);">●</span> Task</label>
+                <textarea data-question="conflict" data-section="task"
+                    placeholder="What was your role in addressing the conflict?"></textarea>
+                <div class="char-count">0 characters</div>
+            </div>
+            <div class="practice-input-group">
+                <label><span style="color: var(--action-color);">●</span> Action</label>
+                <textarea data-question="conflict" data-section="action"
+                    placeholder="How did you approach resolving it? What techniques did you use?"></textarea>
+                <div class="char-count">0 characters</div>
+            </div>
+            <div class="practice-input-group">
+                <label><span style="color: var(--result-color);">●</span> Result</label>
+                <textarea data-question="conflict" data-section="result"
+                    placeholder="How was the conflict resolved? How did it affect the team afterward?"></textarea>
+                <div class="char-count">0 characters</div>
+            </div>
+            <div class="practice-buttons">
+                <button class="practice-btn practice-btn-primary" onclick="exportAnswer('conflict')">
+                    <i class="fas fa-copy"></i> Copy Answer
+                </button>
+                <button class="practice-btn practice-btn-secondary" onclick="clearDraft('conflict')">
+                    <i class="fas fa-trash"></i> Clear
+                </button>
+                <span class="saved-indicator"><i class="fas fa-check"></i> Saved</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<details class="info-box mt-8">
+    <summary class="text-xl font-semibold"
+        style="cursor: pointer; list-style: none; display: flex; align-items: center; gap: 0.5rem;">
+        <i class="fas fa-chevron-right details-icon"
+            style="color: var(--accent-primary); font-size: 0.875rem; transition: transform 150ms ease;"></i>
+        <i class="fas fa-lightbulb" style="color: var(--warning);"></i> Practice Tips
+    </summary>
+    <ul class="list-disc ml-5 mt-3">
+        <li>Record yourself answering these questions and review the recording</li>
+        <li>Use the timer above and aim for responses under 2 minutes</li>
+        <li>Practice with a friend who can provide feedback</li>
+        <li>Create an "achievement journal" to catalog experiences you can draw from</li>
+        <li>Customize your examples for different job applications</li>
+        <li>Focus on recent experiences (within the last 2-3 years) whenever possible</li>
+    </ul>
+</details>
